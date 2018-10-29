@@ -28,8 +28,8 @@ HEIGHT = 480
 FRAMERATE = 24
 HTTP_PORT = 8082
 WS_PORT = 8084
-COLOR = u'#444'
-BGCOLOR = u'#333'
+COLOR = '#444'
+BGCOLOR = '#333'
 JSMPEG_MAGIC = b'jsmp'
 JSMPEG_HEADER = Struct('>4sHH')
 VFLIP = False
@@ -120,7 +120,7 @@ class BroadcastThread(Thread):
     def run(self):
         try:
             while True:
-                buf = self.converter.stdout.read1(32768)
+                buf = self.converter.stdout.read(32768)
                 if buf:
                     self.websocket_server.manager.broadcast(buf, binary=True)
                 elif self.converter.poll() is not None:
